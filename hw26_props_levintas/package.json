@@ -1,0 +1,24 @@
+{
+  "name": "cw25_react",
+  "version": "1.0.0",
+  "main": "js1.js",
+  "scripts": {
+    "start": "esbuild src/main.tsx --bundle --outfile=dist/main.js --sourcemap --servedir=. --serve=8050",
+    "build": "esbuild src/main.tsx --bundle --minify --outfile=dist/main.js",
+    "check": "tsc --noEmit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "esbuild": "^0.28.1",
+    "typescript": "^6.0.3"
+  }
+}
