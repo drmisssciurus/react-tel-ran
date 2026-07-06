@@ -1,7 +1,11 @@
 import { type Car } from '../types/car';
 import '../styles/CarCard.css';
 
-const CarCard = ({ model, serialNumber, manufacturer, year }: Car) => {
+// type CarProps = {
+//   car: Car;
+// };
+
+const CarCard = ({ model, manufacturer, year, serialNumber }: Car) => {
   return (
     <div className="car-card">
       <div className="car-card__header">

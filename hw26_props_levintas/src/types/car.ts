@@ -4,4 +4,5 @@ export type Car = {
   manufacturer: string;
   model: string;
   year: number;
+  // owner: string;
 };

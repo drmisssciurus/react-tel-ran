@@ -40,6 +40,14 @@ const App = () => {
       <h2 className="app__title">
         <span>All</span> styles was created by claude 😊
       </h2>
+
+      <dl>
+        <dt>React</dt>
+        <dd>Библиотека для создания пользовательских интерфейсов.</dd>
+
+        <dt>TypeScript</dt>
+        <dd>Строгий наднабор JavaScript, добавляющий статическую типизацию.</dd>
+      </dl>
     </div>
   );
 };
