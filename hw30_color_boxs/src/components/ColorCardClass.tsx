@@ -2,8 +2,8 @@ import type { Colors } from '../types/colors';
 import { Component } from 'react';
 
 type ColorCardProps = {
-  color: Colors;
-  changeColor: (color: Colors) => void;
+  color: string;
+  changeColor: (color: string) => void;
 };
 export default class ColorCardClass extends Component<ColorCardProps> {
   render() {

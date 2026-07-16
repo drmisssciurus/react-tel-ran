@@ -2,6 +2,7 @@ import { Component } from 'react';
 import ColorCard from './components/ColorCard';
 import { colors } from './types/colors';
 import './App.css';
+import ColorCardClass from './components/ColorCardClass';
 
 type AppClassState = {
   bgColor: string | null;
@@ -26,7 +27,7 @@ export default class AppClass extends Component<{}, AppClassState> {
         ></div>
         <div className="palette">
           {colors.map((color) => (
-            <ColorCard
+            <ColorCardClass
               key={color.id}
               color={color.color}
               changeColor={this.changeColor}

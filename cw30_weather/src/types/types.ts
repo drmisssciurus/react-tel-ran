@@ -17,6 +17,7 @@ export type WeatherInfo = {
   windSpeed: number;
   description: string;
   sunset: number;
+  sunrise: number;
   timezone: number;
 };
 
@@ -32,6 +33,7 @@ export type OpenWeatherResponce = {
   };
   wind: { speed: number };
   sys: {
+    sunrise: number;
     country: string;
     sunset: number;
   };

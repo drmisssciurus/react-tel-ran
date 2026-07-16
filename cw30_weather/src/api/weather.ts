@@ -14,6 +14,7 @@ function toWeatherInfo(data: OpenWeatherResponce): WeatherInfo {
     windSpeed: data.wind.speed,
     description: data.weather[0]?.description ?? 'no description',
     sunset: data.sys.sunset,
+    sunrise: data.sys.sunrise,
     timezone: data.timezone,
   };
 }

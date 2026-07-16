@@ -4,13 +4,9 @@ type WeatherCardProps = {
   status: WeatherStatus;
 };
 
-function formatDate(date: number) {
-  const newDate = date * 1000;
-  const dateParts = new Date(newDate);
-  return dateParts.toLocaleTimeString('en-GB', {
-    hour: '2-digit',
-    minute: '2-digit',
-  });
+function formatDate(date: number, timezoneOffset: number) {
+  const unuversalTimeMs = date * 1000 + timezoneOffset * 1000;
+  return new Date(unuversalTimeMs).toISOString().slice(11, 16);
 }
 
 const WeatherCard = ({ status }: WeatherCardProps) => {
@@ -31,12 +27,19 @@ const WeatherCard = ({ status }: WeatherCardProps) => {
         {data.city}, {data.country}
       </h2>
       <div className="weather-result__main">
-        <div className="card_numbers">Temperature {data.temp}°C</div>
-        <div className="card_numbers">Feels like {data.feelselike}</div>
-        <div className="card_numbers">Wind speed {data.windSpeed}</div>
-        <div className="card_numbers">Humidity {data.humidity}</div>
-        <div className="card_numbers">Pressure {data.pressure}</div>
-        <div className="card_numbers">Sunset {formatDate(data.sunset)}</div>
+        <div className="card_numbers">Temperature {data.temp.toFixed(0)}°C</div>
+        <div className="card_numbers">
+          Feels like {data.feelselike.toFixed(0)}°C
+        </div>
+        <div className="card_numbers">Wind speed {data.windSpeed} m/s</div>
+        <div className="card_numbers">Humidity {data.humidity} %</div>
+        <div className="card_numbers">Pressure {data.pressure} mb</div>
+        <div className="card_numbers">
+          Sunset {formatDate(data.sunset, data.timezone)} by local TimeZone
+        </div>
+        <div className="card_numbers">
+          Sunrise {formatDate(data.sunrise, data.timezone)} by local TimeZone
+        </div>
       </div>
     </div>
   );
