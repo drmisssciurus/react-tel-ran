@@ -1,0 +1,110 @@
+:root {
+  --clr-bg: #f4f6f9;
+  --clr-surface: #ffffff;
+  --clr-surface-2: #eef1f6;
+  --clr-border: #d8dde8;
+  --clr-text: #4a5568;
+  --clr-text-muted: #8896a8;
+  --clr-heading: #1a202c;
+  --clr-accent: #3b6fd4;
+  --clr-accent-dim: rgba(59, 111, 212, 0.1);
+  --clr-accent-glow: rgba(59, 111, 212, 0.2);
+  --clr-correct: #16a34a;
+  --clr-correct-dim: rgba(22, 163, 74, 0.1);
+  --clr-wrong: #dc2626;
+  --clr-wrong-dim: rgba(220, 38, 38, 0.1);
+
+  --radius: 14px;
+  --radius-sm: 8px;
+  --radius-lg: 20px;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.12);
+  --shadow-accent: 0 4px 20px var(--clr-accent-glow);
+
+  --transition: 0.25s ease;
+
+  font: 16px/1.6 system-ui, 'Segoe UI', Roboto, sans-serif;
+  color: var(--clr-text);
+  background: var(--clr-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(59, 111, 212, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 100%, rgba(22, 163, 74, 0.05) 0%, transparent 60%),
+    var(--clr-bg);
+}
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+h1 {
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 700;
+  color: var(--clr-heading);
+  letter-spacing: -1px;
+  margin: 0 0 24px;
+
+  span {
+    color: var(--clr-accent);
+  }
+}
+
+p {
+  margin: 0;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-6px); }
+  40%       { transform: translateX(6px); }
+  60%       { transform: translateX(-4px); }
+  80%       { transform: translateX(4px); }
+}
+
+@keyframes pop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { loadRatesData } from '../api/ratesApi';
+import { loadRates } from '../api/ratesApi';
 import type { ConverterControls, RatesStatus } from '../types';
 import FuncConverterForm from '../components/FuncConverterForm';
 import FuncRatesSummary from '../components/FuncRatesSummary';
@@ -25,7 +25,7 @@ const FunctionalPage = () => {
       message: 'Loading rates...',
     });
     try {
-      const result = await loadRatesData();
+      const result = await loadRates();
       setStatus({
         type: 'success',
         result,

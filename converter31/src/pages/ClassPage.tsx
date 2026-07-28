@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import type { ConverterControls, CurrencyCode, RatesStatus } from '../types';
-import { loadRatesData } from '../api/ratesApi';
+import { loadRates } from '../api/ratesApi';
 import { convertCurrency } from '../utils/currency';
 import ConverterForm from '../components/ConverterForm';
 import RatesSummary from '../components/RatesSummary';
@@ -33,7 +33,7 @@ export default class ClassPage extends Component<
       },
     });
     try {
-      const result = await loadRatesData();
+      const result = await loadRates(forceRefresh);
       this.setState({
         status: {
           type: 'success',

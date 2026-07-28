@@ -25,3 +25,8 @@ export type RateResult = {
   source: 'api' | 'localStorage';
   expiresAt: number;
 };
+
+export type RatesCache = {
+  data: RatesData;
+  expiresAt: number;
+};
