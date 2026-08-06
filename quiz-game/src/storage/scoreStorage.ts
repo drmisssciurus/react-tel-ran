@@ -25,6 +25,25 @@ export function findOrCreateUser(name: string): User {
   return existingUser;
 }
 
+export function loadAllUsers(): User[] {
+  const rawUsers = localStorage.getItem(USER_STORAGE_KEY);
+  if (!rawUsers) {
+    return [];
+  }
+  return JSON.parse(rawUsers) as User[];
+}
+export function deleteUser(userId: number): User[] {
+  const rawUsers = loadAllUsers();
+  const user = rawUsers.find((u) => u.id === userId);
+  if (!user) {
+    return;
+  }
+  const newUsers = rawUsers.filter((u) => u.id !== userId);
+  localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(newUsers));
+  clearScore(userId);
+  return newUsers;
+}
+
 export function loadScore(userId: number): GameScore {
   const rawScore = localStorage.getItem(SCORE_STORAGE_KEY);
   if (!rawScore) {

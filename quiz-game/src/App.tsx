@@ -6,6 +6,9 @@ import {
   loadScore,
   saveScore,
   emptyScore,
+  loadAllUsers,
+  findOrCreateUser,
+  deleteUser,
 } from './storage/scoreStorage';
 import { cities } from './data/cities';
 import { createQuestion, updateScore } from './utils/game';
@@ -13,7 +16,8 @@ import AnswerButton from './components/AnswerButton';
 import CityImage from './components/CityImage';
 import ScorePanel from './components/ScorePanel';
 import { loadCityPhoto } from './api/unsplashApi';
-import LoginForm from './components/LoginForm';
+import UserPanel from './components/UserPanel';
+import RatingPanel from './components/RatingPanel';
 
 function App() {
   const [score, setScore] = useState<GameScore>(emptyScore);
@@ -25,11 +29,33 @@ function App() {
   const [isPhotoLoading, setIsPhotoLoading] = useState(false);
   const [photoError, setPhotoError] = useState<string>();
   const [user, setUser] = useState<User | null>(null);
+  const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
     if (!user) return;
     saveScore(user.id, score);
   }, [score, user]);
+
+  useEffect(() => {
+    setUsers(loadAllUsers());
+  }, []);
+
+  function handeSelectUser(user: User) {
+    setUser(user);
+    setScore(loadScore(user.id));
+  }
+
+  function handleAddUser(name: string) {
+    setUsers([...users, findOrCreateUser(name)]);
+  }
+
+  function handleDeleteUser(userToDelete: User) {
+    setUsers(deleteUser(userToDelete.id));
+    if (user?.id === userToDelete.id) {
+      setUser(null);
+      setScore(emptyScore);
+    }
+  }
 
   useEffect(() => {
     let ignore = false;
@@ -38,9 +64,8 @@ function App() {
       setPhotoError(undefined);
       setPhoto(undefined);
       try {
-        console.log('load photo');
         const nextPhoto = await loadCityPhoto(question.correctCity);
-        console.log(nextPhoto);
+
         if (!ignore) {
           setPhoto(nextPhoto);
         }
@@ -80,11 +105,6 @@ function App() {
     setScore(emptyScore);
   }
 
-  function handleLogin(user: User): void {
-    setUser(user);
-    setScore(loadScore(user.id));
-  }
-
   const feedback =
     selectCityId === undefined
       ? 'Look at the photo and choose the city'
@@ -95,43 +115,62 @@ function App() {
   return (
     <>
       <main className="game">
-        {user ? (
-          <div className="game-wrapper">
-            <h1>Hi {user.name}! Guess the City:</h1>
-            <ScorePanel
-              user={user.name}
-              score={score}
-              onReset={handleResetScore}
-            />
-            <CityImage
-              photo={photo}
-              error={photoError}
-              isLoading={isPhotoLoading}
-            />
-            <p className="feedback">{feedback}</p>
-            <div className="answer-grid">
-              {question.options.map((city) => (
-                <AnswerButton
-                  key={city.id}
-                  city={city}
-                  correctCityId={question.correctCity.id}
-                  selectedCityId={selectCityId}
-                  onSelect={handleAnswer}
-                />
-              ))}
+        <div className="game-wrapper">
+          <RatingPanel users={users} />
+          {user === null ? (
+            <div>
+              <h1>Select player to start</h1>
+              <UserPanel
+                users={users}
+                activeUser={user}
+                onSelect={handeSelectUser}
+                onDelete={handleDeleteUser}
+                onCreate={handleAddUser}
+              />
             </div>
-            <button
-              className="next-btn"
-              type="button"
-              onClick={handleNextQuestion}
-              disabled={isPhotoLoading}
-            >
-              Next question
-            </button>
-          </div>
-        ) : (
-          <LoginForm onLogin={handleLogin} />
-        )}
+          ) : (
+            <>
+              <UserPanel
+                users={users}
+                activeUser={user}
+                onSelect={handeSelectUser}
+                onDelete={handleDeleteUser}
+                onCreate={handleAddUser}
+              />
+              <ScorePanel
+                user={user.name}
+                score={score}
+                onReset={handleResetScore}
+              />
+              <h1>Hi {user.name}! Guess the City:</h1>
+              <CityImage
+                photo={photo}
+                error={photoError}
+                isLoading={isPhotoLoading}
+              />
+              <p className="feedback">{feedback}</p>
+              <div className="answer-grid">
+                {question.options.map((city) => (
+                  <AnswerButton
+                    key={city.id}
+                    city={city}
+                    correctCityId={question.correctCity.id}
+                    selectedCityId={selectCityId}
+                    onSelect={handleAnswer}
+                  />
+                ))}
+              </div>
+              <button
+                className="next-btn"
+                type="button"
+                onClick={handleNextQuestion}
+                disabled={isPhotoLoading}
+              >
+                Next question
+              </button>
+            </>
+          )}
+        </div>
       </main>
     </>
   );

@@ -16,7 +16,6 @@ type UnsplashResponse = {
 };
 
 export async function loadCityPhoto(city: City): Promise<CityPhoto> {
-  console.log('im in load city photo');
   const accessKey = import.meta.env.VITE_ACCESS_KEY;
   if (!accessKey) {
     throw new Error('Missing access key');
@@ -27,7 +26,6 @@ export async function loadCityPhoto(city: City): Promise<CityPhoto> {
     content_filter: 'high',
     client_id: accessKey,
   });
-  console.log(params);
   const response = await fetch(`${API_URL}?${params.toString()}`);
   if (!response.ok) {
     throw new Error(`Failed to load photo: ${response.statusText}`);
