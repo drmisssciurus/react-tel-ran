@@ -36,7 +36,7 @@ export function deleteUser(userId: number): User[] {
   const rawUsers = loadAllUsers();
   const user = rawUsers.find((u) => u.id === userId);
   if (!user) {
-    return;
+    return rawUsers;
   }
   const newUsers = rawUsers.filter((u) => u.id !== userId);
   localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(newUsers));

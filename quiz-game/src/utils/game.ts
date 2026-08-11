@@ -27,8 +27,9 @@ export function createQuestion(
   const availableCities = cities.filter((c) => c.id !== previousCityId);
   const correctCity = getRandomItem(availableCities);
   const wrongOptions = shuffle(
-    cities.filter((c) => c.id !== correctCity.id).slice(0, 3)
-  );
+    cities.filter((c) => c.id !== correctCity.id)
+  ).slice(0, 3);
+
   return {
     correctCity,
     options: shuffle([correctCity, ...wrongOptions]),

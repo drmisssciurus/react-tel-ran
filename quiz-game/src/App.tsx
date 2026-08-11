@@ -46,7 +46,8 @@ function App() {
   }
 
   function handleAddUser(name: string) {
-    setUsers([...users, findOrCreateUser(name)]);
+    findOrCreateUser(name);
+    setUsers(loadAllUsers());
   }
 
   function handleDeleteUser(userToDelete: User) {
