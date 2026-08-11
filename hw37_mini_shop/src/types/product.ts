@@ -5,6 +5,10 @@ export type Product = {
   image: string;
 };
 
+//export type CartItem = Product & {
+// quantity: number;
+// };
+
 export type CartItem = {
   product: Product;
   quantity: number;
