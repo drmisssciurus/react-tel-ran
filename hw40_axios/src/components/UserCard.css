@@ -1,0 +1,38 @@
+.user-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 20px;
+  text-align: left;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg);
+  box-shadow: var(--shadow);
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.user-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-border);
+}
+
+.user-card__name {
+  margin: 0 0 8px;
+}
+
+.user-card__email {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.user-card__city,
+.user-card__company {
+  color: var(--text);
+}
+
+.user-card__label {
+  color: var(--text-h);
+  font-weight: 500;
+}

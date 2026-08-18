@@ -1,0 +1,25 @@
+.users-page {
+  flex: 1;
+  padding: 0 24px 48px;
+}
+
+.users-page__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  text-align: left;
+}
+
+.users-page__status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-height: 200px;
+  font-size: 20px;
+  color: var(--text);
+}
+
+.users-page__status--error {
+  color: #e5484d;
+}

@@ -48,7 +48,7 @@ function RoutePresentPage() {
         return () => {
             cancelled = true;
         };
-    }, [paramsValid]);
+    }, [from, to]);
 
     if (!paramsValid) {
         return (
