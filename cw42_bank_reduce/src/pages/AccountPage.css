@@ -1,0 +1,90 @@
+.account-page {
+  max-width: 460px;
+  margin: 48px auto;
+  padding: 40px 36px;
+  background: #fbfaf6;
+  border: 1px solid #ded9c8;
+  border-radius: 6px;
+  box-shadow: 0 24px 48px rgba(30, 30, 20, 0.1);
+  font-family: Georgia, 'Times New Roman', serif;
+  color: #2f3542;
+}
+
+.account-balance {
+  text-align: center;
+  padding-bottom: 28px;
+  border-bottom: 1px solid #ded9c8;
+  margin-bottom: 28px;
+}
+
+.account-label {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 12px;
+  color: #8a8570;
+  margin-bottom: 12px;
+}
+
+.account-amount {
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #96731e;
+  margin: 0;
+}
+
+.account-operations {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.account-input {
+  width: 110px;
+  padding: 10px 12px;
+  background: #fff;
+  border: 1px solid #ded9c8;
+  border-radius: 3px;
+  color: #96731e;
+  font-family: inherit;
+  font-size: 16px;
+  text-align: right;
+}
+
+.account-input:focus {
+  outline: none;
+  border-color: #96731e;
+}
+
+.account-btn {
+  padding: 10px 18px;
+  background: transparent;
+  border: 1px solid #c7c0a8;
+  border-radius: 3px;
+  color: #2f3542;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 12px;
+  font-family: inherit;
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+}
+
+.account-btn:hover {
+  border-color: #96731e;
+  color: #96731e;
+}
+
+.account-btn-reset {
+  border-color: #d9b8b8;
+  color: #a04d4d;
+}
+
+.account-btn-reset:hover {
+  border-color: #a04d4d;
+  color: #802020;
+}
