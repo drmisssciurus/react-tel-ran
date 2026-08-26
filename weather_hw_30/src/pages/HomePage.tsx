@@ -1,11 +1,14 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
+import Info from '../components/Info';
 
 function HomePage() {
   return (
-    <div>
-      <NavLink to="/weather">Weather</NavLink>
-      <NavLink to="/profile">Profile</NavLink>
+    <div className="app-shell">
+      <Info />
+      <nav className="home-links">
+        <NavLink to="/weather">Weather</NavLink>
+        <NavLink to="/profile">Profile</NavLink>
+      </nav>
     </div>
   );
 }

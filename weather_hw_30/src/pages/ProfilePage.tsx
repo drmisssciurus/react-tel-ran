@@ -2,7 +2,7 @@ import ProfileCard from '../components/ProfileCard';
 
 function ProfilePage() {
   return (
-    <section>
+    <section className="app-shell">
       <ProfileCard />
     </section>
   );

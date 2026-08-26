@@ -24,7 +24,7 @@ function WeatherCard() {
   }
 
   return (
-    <section className="message-card">
+    <section className="weather-card">
       <div>
         <p className="weather-card__label">Location</p>
         <h2>

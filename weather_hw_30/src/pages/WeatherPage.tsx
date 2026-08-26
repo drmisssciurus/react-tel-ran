@@ -3,7 +3,7 @@ import WeatherCard from '../components/WeatherCard';
 
 function WeatherPage() {
   return (
-    <section>
+    <section className="app-shell">
       <WeatherSearch />
       <WeatherCard />
     </section>

@@ -6,10 +6,11 @@ function ProfileCard() {
   const profile = useAppSelector((state) => state.profile);
 
   return (
-    <div>
-      <div>{profile.name.toUpperCase()}</div>
-      <p>{profile.role}</p>
-      <label htmlFor="name">
+    <div className="profile-card">
+      <p className="weather-card__label">Profile</p>
+      <h2>{profile.name.toUpperCase()}</h2>
+      <p className="weather-card__description">{profile.role}</p>
+      <label htmlFor="name" className="profile-card__field">
         Name
         <input
           id="name"
